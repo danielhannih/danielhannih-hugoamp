@@ -1,0 +1,5 @@
+{{ $style := resources.Get "style.scss" | toCSS | postCSS (dict "use" "autoprefixer") | minify }}
+
+<style amp-custom>
+{{ $style.Content | safeCSS }}
+</style>
