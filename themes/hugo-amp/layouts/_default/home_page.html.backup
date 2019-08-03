@@ -1,16 +1,43 @@
 {{ define "main" }}
 
+
+<amp-sidebar id="sidebar" layout="nodisplay" side="right">
+      <button on="tap:sidebar.close">Toggle sidebar</button>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li> Nav item 1</li>
+        <li> Nav item 4 - Image</li>
+        <li> Nav item 5</li>
+        <li> Nav item 6</li>
+      </ul>
+    </amp-sidebar>
+
+<button on="tap:sidebar.toggle">Toggle sidebar</button>
+
+
+
+
+
 <section>
+
+  <a href="{{ .Params.dribbble }}">Dribbble</a>
+
+  <a href="{{ .Site.Params.dribbble }}">Dribbble</a>
+
+  {{/* <p>{{ .Site.Params.description }}</p> */}}
+
+
+
 
 
 {{- with .Resources.Match "laptop*" }}
-{{ range . }}{{ $imgtwitter := .Fill "1200x675" }}
-<img src="{{ $imgtwitter.Permalink }}">
+{{ range . }}{{ $laptop := .Fill "1200x675" }}
+<img src="{{ $laptop.Permalink }}">
 {{ end }}
 {{ end }}
 
 
-
+{{/*
   <h1>Daniel Hannih</h1>
   <p>born Daniel Johannes Albert Mitteregger - living and working in Graz, Austria.</p>
   <p>While it all started with drawings in my childhood, the ways I try to express myself evolved in a lot of different categories. From illustrations and artworks to ui and ux design. From app and mobile games design to even developing them.</p>
@@ -87,6 +114,6 @@
   </div>
 
 </section>
-
+*/}}
 </body>
 {{ end }}

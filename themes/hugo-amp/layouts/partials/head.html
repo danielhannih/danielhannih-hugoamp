@@ -1,8 +1,139 @@
+<!-- AMP Variables -->
+{{ $amp_runtime := "https://cdn.ampproject.org/v0.js" }}
+{{ $amp_analytics := "https://cdn.ampproject.org/v0/amp-analytics-0.1.js" }}
+{{ $amp_youtube := "https://cdn.ampproject.org/v0/amp-youtube-0.1.js" }}
+{{ $amp_carousel := "https://cdn.ampproject.org/v0/amp-carousel-0.1.js" }}
+{{ $amp_lightbox_gallery := "https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js" }}
+{{ $amp_social_share := "https://cdn.ampproject.org/v0/amp-social-share-0.1.js" }}
+{{ $amp_auto_ads := "https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js" }}
+{{ $amp_ads := "https://cdn.ampproject.org/v0/amp-ad-0.1.js" }}
+{{ $amp_sidebar := "https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" }}
+
+
+
 <meta charset="utf-8">
-{{ partial "amp/amp-base.html" . }}
 
-<title>{{ .Site.Title }}</title>
 
-<meta name="description" content="{{ .Site.Params.SiteDescription }}">
 
-{{ partial "head/head-main.html" . }}
+<!-- 1. META -->
+<!-- Alle meta tags sollten hier her -->
+<meta name="description" content="{{ .Site.Params.description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<meta name="referrer" content="unsafe-url">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="google-site-verification" content="FKrF6yyaT3BrppQ7yi9VZtQHGzJmEWAhWv_unWkHKz8" />
+
+<!-- Social Media Stuff -->
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ .Description }}" />
+<meta property="og:site_name" content="Daniel Hannih's Website" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:type" content="website" />
+
+{{- with .Resources.Match "feature*" }}
+<meta property="og:image" content="{{ range . }}{{ $imgfb := .Fill "1200x630" }}{{ $imgfb.Permalink }}{{ end }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+{{ end }}
+
+<meta name="twitter:card" content="{{ .Description }}">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ .Description }}">
+{{- with .Resources.Match "feature*" }}
+<meta name="twitter:image" content="{{ range . }}{{ $imgtwitter := .Fill "1200x675" }}{{ $imgtwitter.Permalink }}{{ end }}">
+{{ end }}
+
+
+
+<!-- 2. AMP Runtime -->
+<!-- Preload the AMP runtime v0.js -->
+<link rel="preload" as="script" href="{{ $amp_runtime }}">
+
+
+
+<!-- 3. Preload AMP Components & Extensions  -->
+{{/* <link as="script" rel="preload" href="{{ $amp_sidebar }}"> */}}
+
+
+
+<!-- 4. Preconnect to unknown resources ahead eg: https://fonts.gstatic.com/ -->
+<link rel="preconnect dns-prefetch" href="https://use.typekit.net" crossorigin>
+
+
+
+<!-- 5. Load the AMP runtime: -->
+<script async src="{{ $amp_runtime }}"></script>
+
+
+
+<!-- 6. Load your AMP Extensions -->
+<script async custom-element="amp-youtube" src="{{ $amp_youtube }}"></script>
+{{/* <script async custom-element="amp-sidebar" src="{{ $amp_sidebar }}"></script> */}}
+
+
+
+
+<!-- 7. Load otherscripts that are not render blocking -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Daniel Hannih - Creator and Maker from Graz, Austria",
+    "alternateName": "Daniel Hannih",
+    "url": "https://danielhannih.com"
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Daniel Hannih",
+    "url": "https://danielhannih.com",
+    "sameAs": [
+      "https://www.facebook.com/TheArtOfHannih/",
+      "https://www.instagram.com/danielhannih/",
+      "https://www.linkedin.com/in/danielhannih/",
+      "https://www.facebook.com/TheArtOfHannih/",
+      "https://www.youtube.com/user/danivain",
+      "https://dribbble.com/danielhannih",
+      "https://plus.google.com/+DanielHannih"
+    ]
+  }
+</script>
+
+
+
+<!-- 8. Styling / CSS -->
+{{- $style := resources.Get "styling.scss" | toCSS | postCSS (dict "use" "autoprefixer") | minify -}}
+
+<style amp-custom>
+{{- $style.Content | safeCSS -}}
+</style>
+
+
+
+<!-- 9. Add any other tags allowed in the head section. In particular, any external fonts should go last since they block rendering -->
+<link rel="stylesheet" href="https://use.typekit.net/{{ .Site.Params.typekitID }}.css">
+
+
+{{ partial "head/favicon.html" . }}
+
+<!-- RSS -->
+{{ range .AlternativeOutputFormats -}}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
+
+
+<!-- 10. AMP boilerplate comes last! -->
+{{ partial "amp/amp-boilerplate.html" . }}
+
+
+
+<!-- 11. Canonical + Title -->
+<link rel="canonical" href="{{ .Permalink }}">
+<title>{{ .Title }}</title>

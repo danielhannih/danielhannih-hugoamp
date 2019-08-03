@@ -4,10 +4,17 @@ enableRobotsTXT = true
 disableHugoGeneratorInject = true
 uglyURLs = false
 
-title = "Daniel Hannih - Creator and Maker from Graz, Austria"
-[params]
-  SiteDescription = "While coming from a graphic design and illustration background, I'm now truning my ideas to real-life products, like casual mobile games and various websites. I also love to paint acrylics on canvas and making music. I'm always down for business. Say hi!"
-
 [taxonomies] # tax off
-    tag = ""
-    category = ""
+tag = ""
+category = ""
+
+title = "Daniel Hannih - Creator and Maker from Graz, Austria"
+
+
+[params]
+description = "While coming from a graphic design and illustration background, I'm now truning my ideas to real-life products, like casual mobile games and various websites. I also love to paint acrylics on canvas and making music. I'm always down for business. Say hi!"
+
+dribbble = "https://dribbble.com/danielhannih"
+
+
+typekitID = "imd4zsj"

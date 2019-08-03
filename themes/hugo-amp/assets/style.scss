@@ -259,3 +259,18 @@ h1, h2, p, a, p:nth-of-type(1), p:nth-of-type(2), p:nth-of-type(3), p:nth-of-typ
     zoom:1.3;
   }
 }
+
+
+
+// NEW STUFF
+
+amp-sidebar {
+
+  &[side=right] {
+    animation-duration: 500ms;
+  }
+  &[open] {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
