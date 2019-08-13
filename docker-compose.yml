@@ -11,6 +11,7 @@ services:
   server:
     build:
       context: ./
+    # command: hugo server --noHTTPCache --bind 0.0.0.0 --disableFastRender --disableLiveReload --baseURL=http://MacBook-Pro-Spacegrey.local
     command: hugo server --noHTTPCache --bind 0.0.0.0 --disableFastRender --baseURL=http://MacBook-Pro-Spacegrey.local
     ports:
       - "1313:1313"

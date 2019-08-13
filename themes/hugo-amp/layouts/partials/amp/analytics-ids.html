@@ -1,0 +1,39 @@
+<amp-analytics type="googleanalytics">
+  <script type="application/json">
+    {
+      "vars": {
+        "account": "{{ $.Site.Params.googleAnalytics }}"
+      },
+      "triggers": {
+        "trackPageview": {
+          "on": "visible",
+          "request": "pageview"
+        },
+        "linkClicks": {
+          "on": "click",
+          "selector": "a",
+          "request": "event",
+          "vars": {
+            "eventCategory": "Link Click",
+            "eventAction": "Click"
+          }
+        },
+        "scrollPings": {
+          "on": "scroll",
+          "scrollSpec": {
+            "verticalBoundaries": [5, 10, 20, 25, 50, 75, 100]
+          },
+          "request": "event",
+          "vars": {
+            "eventCategory": "Scroll Depth",
+            "eventLabel": "${verticalScrollBoundary}%",
+            "eventAction": "Scroll"
+          },
+          "extraUrlParams": {
+            "ni": 1
+          }
+        }
+      }
+    }
+  </script>
+</amp-analytics>

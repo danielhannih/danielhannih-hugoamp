@@ -1,0 +1,102 @@
+
+<!-- Website -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Params.personName }}",
+    "alternateName": "{{ .Site.Params.alternatePageName }}",
+    "url": "{{ .Site.BaseURL }}"
+}
+</script>
+
+
+<!---------------------------------------------------------------------------------------->
+
+
+<!-- Person -->
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "{{ .Site.Params.personName }}",
+    "image": "{{ .Site.Params.profileImage }}",
+    "url": "{{ .Site.BaseURL }}",
+    "sameAs": [
+      "https://www.facebook.com/TheArtOfHannih/",
+      "https://www.instagram.com/danielhannih/",
+      "https://www.linkedin.com/in/danielhannih/",
+      "https://www.facebook.com/TheArtOfHannih/",
+      "https://www.youtube.com/user/danivain",
+      "https://dribbble.com/danielhannih",
+      "https://plus.google.com/+DanielHannih"
+    ],
+    "birthDate": "1991-09-26",
+    "birthPlace": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Graz",
+        "addressRegion": "Styria",
+        "postalCode": "8036",
+        "streetAddress": "Auenbruggerplatz 1",
+        "addressCountry": "AT"
+      },
+    "name": "LKH-Univ. Klinikum Graz"
+    },
+    "givenName": "Daniel Johannes Albert",
+    "familyName": "Mitteregger",
+    "gender": "Male",
+    "nationality": "AT",
+    "jobTitle": "Designer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Graz",
+      "addressRegion": "Styria",
+      "postalCode": "8010",
+      "streetAddress": "Am Eisernen Tor 2",
+      "addressCountry": "AT"
+    },
+    "email": "mailto:hi@danielhannih.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PSyCat Games"
+    },
+    "parents": [{
+        "@type": "Person",
+        "name": "Theresia Mitteregger",
+        "nationality": "AT"
+      },
+      {
+        "@type": "Person",
+        "name": "János Peischl",
+        "nationality": "HU"
+      }
+    ],
+    "knowsLanguage": [{
+        "@type": "Language",
+        "name": "English",
+        "alternateName": "en"
+      },
+      {
+        "@type": "Language",
+        "name": "German",
+        "alternateName": "de"
+      }
+    ],
+    "affiliation": {
+      "@type": "Organization",
+      "name": "PsyCat Games",
+      "url": "https://psycargames.com/",
+      "sameAs": [
+      "https://www.facebook.com/PsyCatGames/",
+      "https://www.linkedin.com/company/psycat-games/"
+      ],
+      "logo": "https://psycatgames.com/images/logo-psycatgames.png"
+    }
+  }
+</script>
+
+
+<!---------------------------------------------------------------------------------------->
