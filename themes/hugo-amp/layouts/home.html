@@ -139,14 +139,14 @@
 </section>
 
 <section class="how">
-  <h2>The possibility to learn something new every day, is how I'm finding inspiration to create.</h2>
+  <h2>The possibility to learn something new every day, is what powers my drive to be creative.</h2>
   <p>Whenever I discover something new — that firmly excites me — I go all-in. I get obsessed. And suck it up like a sponge. I don’t believe in much, but learning something new each day is the coolest thing ever. And I'm grateful that the majority of us have access to technology to literally go on Youtube and learn how to peel a banana.</p>
   <a class="cta" href="#">Keep exploring</a>
   <div class="astroboy-footer-note">
     <div class="astroboy-info">
       <h5>Astroboy (2014)</h5>
       <span>Photoshop</span>
-      <a target="_blank" href="https://www.youtube.com/watch?v=RfZmEIuyNNc">Making-of Video</a> <!-- In overlay öffnen? -->
+      <a rel="nofollow noopener" target="_blank" href="https://www.youtube.com/watch?v=RfZmEIuyNNc">Making-of Video</a> <!-- In overlay öffnen? -->
     </div>
   </div>
 </section>
@@ -222,7 +222,8 @@
 
 
 <section class="projects-intro">
-  <h2>Curious what<br>I’m doing?</h2>
+  <!-- <h2>Curious what<br>I’m doing?</h2> -->
+  <h2>Stay curious<br>right now.</h2>
 </section>
 
 
@@ -232,10 +233,251 @@
 
 
 <section class="project-psycat-games">
+
+  {{- $hpBlue := "" -}}
+  {{- with .Resources.Match "happy-pills-blue*" -}}
+  {{- range . -}}
+  {{- $hpBlue = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $hpVagra := "" -}}
+  {{- with .Resources.Match "happy-pills-vagra*" -}}
+  {{- range . -}}
+  {{- $hpVagra = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $hpPink := "" -}}
+  {{- with .Resources.Match "happy-pills-pink*" -}}
+  {{- range . -}}
+  {{- $hpPink = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $hpFlaxi := "" -}}
+  {{- with .Resources.Match "happy-pills-flaxi*" -}}
+  {{- range . -}}
+  {{- $hpFlaxi = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $hpShadow := "" -}}
+  {{- with .Resources.Match "pills-shadow*" -}}
+  {{- range . -}}
+  {{- $hpShadow = . -}}
+  {{- end -}}
+  {{- end -}}
+
+
+  {{- $appcloudBallrush := "" -}}
+  {{- with .Resources.Match "ball-rush-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudBallrush = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudBitcoin := "" -}}
+  {{- with .Resources.Match "bitcoin-rush-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudBitcoin = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudBouncyheroes := "" -}}
+  {{- with .Resources.Match "bouncy-heroes-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudBouncyheroes = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudBouncyheroesdungeon := "" -}}
+  {{- with .Resources.Match "bouncy-heroes-dungeon-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudBouncyheroesdungeon = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudCashflow := "" -}}
+  {{- with .Resources.Match "cashflow-rush-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudCashflow = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudCircles := "" -}}
+  {{- with .Resources.Match "circles-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudCircles = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudDangerbricks := "" -}}
+  {{- with .Resources.Match "danger-bricks-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudDangerbricks = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudFlappybird := "" -}}
+  {{- with .Resources.Match "flappy-bird-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudFlappybird = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudHappypills := "" -}}
+  {{- with .Resources.Match "happy-pills-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudHappypills = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudMysticland := "" -}}
+  {{- with .Resources.Match "mystic-land-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudMysticland = . -}}
+  {{- end -}}
+  {{- end -}}
+
+  {{- $appcloudSkillball := "" -}}
+  {{- with .Resources.Match "skillball-app-icon*" -}}
+  {{- range . -}}
+  {{- $appcloudSkillball = . -}}
+  {{- end -}}
+  {{- end -}}
+
+
+
   <div class="image-headline">
     {{- partial "svg/psycat-games-logo.html" -}}
     <h3>PsyCat Games</h3>
   </div>
+
+  <div class="psycat-story-line">
+    {{- partial "svg/psycat-story-line.html" -}}
+  </div>
+
+  <div class="psycat-story">
+    <div class="psycat-story-text">
+      <h4>Why making games?</h4>
+      <p>What fascinates me about the gaming industry is that it requires so many different skills to work together. The whole process behind designing, building, marketing and monetizing is astonishing. As a passionate gamer myself and with entry-friendly software to enable making games, it was a no-brainer to try it out.</p>
+    </div>
+    <div class="psycat-app-cloud">
+
+      <div class="app-cloud-row">
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudBitcoin.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudBouncyheroesdungeon.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+      </div>
+
+      <div class="app-cloud-row">
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudMysticland.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudCashflow.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudHappypills.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+      </div>
+
+      <div class="app-cloud-row">
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudBallrush.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudBouncyheroes.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudFlappybird.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+      </div>
+
+      <div class="app-cloud-row">
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudCircles.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudSkillball.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+        <amp-img class="appicon" alt="app icon" src="{{ $appcloudDangerbricks.Permalink }}" width="200" height="200" layout="responsive"
+          sizes="200px">
+        </amp-img>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="psycat-evolve">
+    <div class="blue-pill-wrap">
+      <div class="blue-pill">
+        <amp-img alt="Happy Pills Blue" src="{{ $hpBlue.Permalink }}" width="228" height="330" layout="responsive"
+          sizes="228px">
+        </amp-img>
+        <amp-img alt="Pills shadow" src="{{ $hpShadow.Permalink }}" width="388" height="130" layout="responsive"
+          sizes="388px">
+        </amp-img>
+      </div>
+    </div>
+    <div class="psycat-evolve-text">
+      <h4>How it envolved.</h4>
+      <p>With a handful of games in place, I wanted a website so people could find them. The site should also support articles around entertainment. In the end the website was designed mobile first and built on top of Google’s AMP with Hugo as a static site generator. This way the site nearly instantly loads if coming from Google Search.</p>
+    </div>
+  </div>
+
+  <div class="psycat-what">
+    <div class="psycat-what-text">
+      <h4>How it envolved.</h4>
+      <p>With a handful of games in place, I wanted a website so people could find them. The site should also support articles around entertainment. In the end the website was designed mobile first and built on top of Google’s AMP with Hugo as a static site generator.</p>
+    </div>
+    <div class="psycat-what-pills">
+      <div class="vagra-pill">
+        <amp-img alt="Happy Pills Vagra" src="{{ $hpVagra.Permalink }}" width="276" height="206" layout="responsive"
+          sizes="276px">
+        </amp-img>
+        <amp-img alt="Pills shadow" src="{{ $hpShadow.Permalink }}" width="388" height="130" layout="responsive"
+          sizes="388px">
+        </amp-img>
+      </div>
+      <div class="pink-pill">
+        <amp-img alt="Happy Pills Pink" src="{{ $hpPink.Permalink }}" width="238" height="236" layout="responsive"
+          sizes="238px">
+        </amp-img>
+        <amp-img alt="Pills shadow" src="{{ $hpShadow.Permalink }}" width="388" height="130" layout="responsive"
+          sizes="388px">
+        </amp-img>
+      </div>
+      <div class="flaxi-pill">
+        <amp-img alt="Happy Pills Flaxi" src="{{ $hpFlaxi.Permalink }}" width="189" height="330" layout="responsive"
+          sizes="189px">
+        </amp-img>
+        <amp-img alt="Pills shadow" src="{{ $hpShadow.Permalink }}" width="388" height="130" layout="responsive"
+          sizes="388px">
+        </amp-img>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="psycat-tools-tech">
+  <div class="psycat-tools-tech-text">
+    <h4>Tools & Technology Scope/Stack</h4>
+    <p>With a handful of games in place, I wanted a website so people could find them. The site should also support articles around entertainment. In the end the website was designed mobile first and built on top of Google’s AMP with Hugo as a static site generator. </p>
+  </div>
+  <div class="psycat-tools-tech-list">
+    <ul>
+      <li>
+        {{- partial "svg/icon-sketch.html" -}}<span>Sketch</span>
+      </li>
+    </ul>
+  </div>
+
 </section>
 
 

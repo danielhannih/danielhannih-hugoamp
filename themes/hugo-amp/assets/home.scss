@@ -23,6 +23,7 @@ html {
   --pastel-green: #E3FDF6;
   --dark-blue: #180DAE;
   --dark-purple: #1B0F29;
+  --pale-grey: #F3F5F9;
   --app-icon-mask: #{$appicon-mask-base64};
 }
 
@@ -36,6 +37,11 @@ body {
   background: #fff;
   color: #000;
 }
+
+::selection {
+    background: var(--dark-blue);
+    color: var(--pastel-green);
+  }
 
 h1,
 h2,
@@ -77,10 +83,17 @@ h3 {
   margin-bottom: 50px;
 }
 
+h4 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
 h5 {
   font-size: 20px;
   margin-bottom: 5px;
 }
+
+
 
 p {
   font-size: 30px;
@@ -88,11 +101,20 @@ p {
   color: var(--dark-purple);
 }
 
+a, amp-img {
+  user-select: none;
+}
+
+ul {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
 a {
   font-family: sofia-pro, sans-serif;
   font-weight: 700;
   text-decoration: none;
-  user-select: none;
+
   &.cta {
     color: #fff;
     background: var(--dark-blue);
@@ -196,9 +218,6 @@ section {
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  amp-img {
-    user-select: none;
-  }
   .interior-lamp-footer-note {
     right: 150px;
     position: absolute;
@@ -234,6 +253,7 @@ section {
 .image-headline {
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
   h3 {
     display: inline-block;
     margin-bottom: 0;
@@ -241,11 +261,131 @@ section {
   }
 }
 
+.projects-intro {
+  padding-bottom: 0;
+  h2 {
+    margin-bottom: 0;
+  }
+}
 
+.project-psycat-games {
+  padding-top: 350px;
+  overflow: hidden;
+  padding-bottom: 300px;
+  box-shadow: inset  0 -150px var(--pale-grey);
+  .psycat-story-line {
+    text-align: center;
+    height: 0;
+    svg {
+      transform: translateX(-50px);
+    }
+  }
+  .psycat-story {
+    display: flex;
+    position: relative;
+    .psycat-app-cloud {
+      display: flex;
+      flex-direction: column;
+      transform: rotate(10deg) translate(170px, -490px);
+      position: absolute;
+      right: 0;
+      .app-cloud-row {
+        display: flex;
+        amp-img {
+          margin: 20px;
+        }
+        &:nth-of-type(1) {
+          transform: translateX(18%);
+        }
+        &:nth-of-type(3) {
+          transform: translateX(9%);
+        }
+        &:nth-of-type(4) {
+          transform: translateX(27%);
+        }
+      }
+    }
+  }
+  .psycat-evolve {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 160px;
+    .blue-pill-wrap {
+      amp-img {
+        &:nth-of-type(1) {
+          transform: rotate(-4deg);
+          margin-left: 7%;
+        }
+        &:nth-of-type(2) {
+          transform: translate(-70px, -12px);
+          margin-left: 7%;
+        }
+      }
+    }
+  }
 
+  .psycat-what {
+    padding-top: 200px;
+    display: flex;
+    position: relative;
+    .psycat-what-pills {
+      div {
+        position: absolute;
+      }
+      .vagra-pill {
+        top: 250px;
+        amp-img {
+          transform: rotate(-9deg);
+          &:nth-of-type(2) {
+            transform: translate(-60px,-21px);
+          }
+        }
+      }
+      .pink-pill {
+        left: 80%;
+        top: 0;
+        amp-img {
+          &:nth-of-type(2) {
+            transform: translate(-70px,-21px);
+          }
+        }
+      }
+      .flaxi-pill {
+        left: 80%;
+        top: 400px;
+        amp-img {
+          transform: rotate(7deg);
+          &:nth-of-type(2) {
+            transform: translate(-113px,-15px);
+          }
+        }
+      }
+    }
+  }
 
+  .psycat-story-text,
+  .psycat-evolve-text,
+  .psycat-what-text {
+    width: 600px;
+    max-width: 100%;
+  }
+}
 
-
+.psycat-tools-tech {
+  padding-top: 0;
+  background: var(--pale-grey);
+  .psycat-tools-tech-list {
+    padding-top: 50px;
+    li {
+      display: inline-flex;
+      align-items: center;
+      font-size: 20px;
+      span {
+        padding-left: 10px;
+      }
+    }
+  }
+}
 
 
 
@@ -258,5 +398,6 @@ section {
     -webkit-mask-box-image: var(--app-icon-mask);
     mask-box-image: var(--app-icon-mask);
     border-radius: 0;
+    box-shadow:0 0 0 2px #fff; //fix Safari ghost border of mask
   }
 }
