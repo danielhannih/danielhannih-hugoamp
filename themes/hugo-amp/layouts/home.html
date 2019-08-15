@@ -19,6 +19,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google-site-verification" content="{{ .Site.Params.googleverification }}">
+  <meta name="generator" content="Hugo 0.56.3">
 
   <!-- Social Media Stuff -->
   <meta property="og:title" content="{{ .Params.seo_title | default .Title }}" />
@@ -347,6 +348,13 @@
   {{- end -}}
   {{- end -}}
 
+  {{- $iconLogicPro := "" -}}
+  {{- with .Resources.Match "icon-logic-pro*" -}}
+  {{- range . -}}
+  {{- $iconLogicPro = . -}}
+  {{- end -}}
+  {{- end -}}
+
 
 
   <div class="image-headline">
@@ -474,6 +482,23 @@
     <ul>
       <li>
         {{- partial "svg/icon-sketch.html" -}}<span>Sketch</span>
+      </li>
+      <li>
+        {{- partial "svg/icon-photoshop.html" -}}<span>Photoshop</span>
+      </li>
+      <li>
+        {{- partial "svg/icon-illustrator.html" -}}<span>Illustrator</span>
+      </li>
+      <li>
+        {{- partial "svg/icon-buildbox.html" -}}<span>Buildbox</span>
+      </li>
+      <li>
+        <div>
+          <amp-img alt="Logic Pro X" src="{{ $iconLogicPro.Permalink }}" width="25" height="29" layout="responsive"
+            sizes="25px">
+          </amp-img>
+        </div>
+        <span>Logic Pro</span>
       </li>
     </ul>
   </div>

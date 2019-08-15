@@ -377,11 +377,19 @@ section {
   .psycat-tools-tech-list {
     padding-top: 50px;
     li {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       font-size: 20px;
+      line-height: 48px;
       span {
         padding-left: 10px;
+      }
+      div {
+        display: inline-flex;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
