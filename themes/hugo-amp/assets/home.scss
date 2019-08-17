@@ -24,7 +24,11 @@ html {
   --dark-blue: #180DAE;
   --dark-purple: #1B0F29;
   --pale-grey: #F3F5F9;
+  --galaxy-dark: #141318;
+  --ocean-blue: #197DFF;
   --app-icon-mask: #{$appicon-mask-base64};
+
+  --translucent: saturate(200%) blur(20px);
 }
 
 body {
@@ -68,9 +72,6 @@ p {
 h1 {
   font-size: 90px;
   margin-bottom: 100px;
-  @media only screen and (max-width: $breakpoint-small-laptop) {
-    font-size: 70px;
-  }
 }
 
 h2 {
@@ -110,10 +111,17 @@ ul {
   list-style-type: none;
 }
 
-a {
+button {
+  cursor: pointer;
+  background: transparent;
+}
+
+a,
+button {
   font-family: sofia-pro, sans-serif;
   font-weight: 700;
   text-decoration: none;
+
 
   &.cta {
     color: #fff;
@@ -129,11 +137,112 @@ a {
   }
 }
 
+.sidebar-open {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+
+
+.sidebar-open,
+.sidebar-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: #000;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  span {
+    display: inline-flex;
+    width: 20px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+  }
+  @supports (-webkit-backdrop-filter: var(--translucent)) or (backdrop-filter: var(--translucent)) {
+    -webkit-backdrop-filter: var(--translucent);
+    backdrop-filter: var(--translucent);
+    background: rgba(200,200,200,0.3);
+    span {
+      -webkit-backdrop-filter: var(--translucent);
+      backdrop-filter: var(--translucent);
+      background: rgba(0,0,0,0.9);
+    }
+  }
+}
+
+.sidebar-open {
+  display: flex;
+  span {
+    &:nth-of-type(1) {
+      transform: translateY(-4px);
+    }
+    &:nth-of-type(2) {
+      transform: translateY(4px);
+    }
+  }
+}
+
+.sidebar-close {
+  z-index: 9999999999;
+  pointer-events: none;
+  display: none;
+  span {
+    &:nth-of-type(1) {
+      transform: rotate(45deg);
+    }
+    &:nth-of-type(2) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+amp-sidebar {
+  width: 80vw;
+  background-color: transparent;
+  background-image: linear-gradient(270deg, #FFFFFF 0%, rgba(255,255,255,0.00) 83%);
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80vh;
+    margin-left: -10vw;
+    justify-content: center;
+    align-items: center;
+    a {
+      color: var(--headline-color);
+      font-size: 50px;
+      line-height: 100px;
+    }
+  }
+  &[open] {
+    & ~ .sidebar-close {
+      display: flex;
+      pointer-events:auto;
+    }
+    & ~ amp-analytics {
+      & ~ div {
+        background-color: #fff;
+        opacity: 0.98;
+      }
+    }
+  }
+}
+
 .recommended-view {
   display: none;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+  box-shadow: 0 2px var(--pale-grey);
   .banner-wide-display,
   .banner-mobile-display {
     display: none;
@@ -163,7 +272,13 @@ a {
 section {
   padding: 150px;
   @media only screen and (max-width: $breakpoint-small-laptop) {
-    padding: 60px;
+    padding: 100px;
+  }
+  @media only screen and (max-width: $breakpoint-tablet) {
+    padding: 100px 60px;
+  }
+  @media only screen and (max-width: $breakpoint-tablet - 1) {
+    padding: 100px 30px;
   }
 }
 
@@ -173,13 +288,29 @@ section {
   background-size: 50%;
   background-position: 126% center;
   background-repeat: no-repeat;
-  // padding-top: 140px;
-  @media only screen and (max-width: $breakpoint-small-laptop) {
-    background-size: 40%;
-    background-position: 120% top;
-  }
   h1 {
     max-width: 80%;
+  }
+
+  @media only screen and (max-width: $breakpoint-small-laptop) {
+    background-size: 42%;
+    background-position: 120% bottom;
+    // height: 640px;
+    h1 {
+      font-size: 70px;
+    }
+  }
+  @media only screen and (max-width: $breakpoint-tablet) {
+    background-size: 47%;
+    h1 {
+      font-size: 60px;
+      margin-bottom: 60px;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (max-width: $breakpoint-tablet - 1) {
+    background-image: none;
+    height: auto;
   }
 }
 
@@ -208,7 +339,39 @@ section {
         color: #E6431B;
         margin-top:5px;
       }
+      button {
+        &.open-overlay {
+          color: #E6431B;
+          margin-top:5px;
+          font-size: 16px;
+        }
+      }
     }
+  }
+}
+
+button {
+  padding:0;
+  border:none;
+  text-align: left;
+  &.close-overlay {
+    padding: 12px 24px;
+    font-size: 20px;
+    border-radius: $round-border;
+    margin: 0 auto 24px;
+    background: #fff;
+    display: inherit;
+  }
+}
+amp-lightbox {
+  background: rgba(0,0,0,.8);
+  amp-youtube {
+    margin: 24px auto;
+    width: 1920px;
+    max-height: 80vh;
+    max-width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,.5);
   }
 }
 
@@ -264,15 +427,20 @@ section {
 .projects-intro {
   padding-bottom: 0;
   h2 {
-    margin-bottom: 0;
+    // margin-bottom: 0;
+  }
+  p {
+    width: 600px;
+    max-width: 100%;
+    margin-bottom: -60px;
   }
 }
 
 .project-psycat-games {
-  padding-top: 350px;
+  padding: 350px 150px 70px;
   overflow: hidden;
-  padding-bottom: 300px;
-  box-shadow: inset  0 -150px var(--pale-grey);
+  // padding-bottom: 300px;
+  // box-shadow: inset  0 -150px var(--galaxy-dark);
   .psycat-story-line {
     text-align: center;
     height: 0;
@@ -350,16 +518,7 @@ section {
           }
         }
       }
-      .flaxi-pill {
-        left: 80%;
-        top: 400px;
-        amp-img {
-          transform: rotate(7deg);
-          &:nth-of-type(2) {
-            transform: translate(-113px,-15px);
-          }
-        }
-      }
+
     }
   }
 
@@ -371,17 +530,50 @@ section {
   }
 }
 
+
+
 .psycat-tools-tech {
-  padding-top: 0;
-  background: var(--pale-grey);
+  background: var(--galaxy-dark);
+  background-image: url(images/wave-breaker-top.svg), url(images/wave-breaker-bot.svg);
+  background-repeat: no-repeat;
+  background-position: bottom, top;
+  position: relative;
+  padding: 250px 150px 220px;
+  .flaxi-pill {
+    left: 70%;
+    top: -140px;
+    position: absolute;
+    amp-img {
+      transform: rotate(7deg);
+      &:nth-of-type(2) {
+        transform: translate(-113px,-15px);
+      }
+    }
+  }
+  .psycat-tools-tech-text {
+    width: 720px;
+    max-width: 100%;
+    h4,
+    p {
+      color: var(--pastel-green);
+    }
+    p {
+      opacity: .7;
+    }
+  }
   .psycat-tools-tech-list {
-    padding-top: 50px;
+    display: flex;
+    padding: 80px 0;
+    ul {
+      width: 25%;
+    }
     li {
       display: flex;
       align-items: center;
       font-size: 20px;
       line-height: 48px;
       span {
+        color: var(--pale-grey);
         padding-left: 10px;
       }
       div {
@@ -396,7 +588,164 @@ section {
 }
 
 
+.project-mystic-land {
+  background-image: url(images/mystic-land-stripe.svg);
+  background-repeat: no-repeat;
+  background-size: 101%;
+  background-position: 50% 540px;
+  .mystic-land-hero {
+    display: flex;
+    padding-bottom:780px;
+    position: relative;
+    .mystic-land-why {
+      margin: 30px 0 0 100px;
+      width: 600px;
+      max-width: 100%;
+      a {
+        color: var(--ocean-blue);
+        &:after {
+          display: inline-flex;
+          content:"";
+          height:10px;
+          width:9px;
+          background-image: url(images/external-link.svg);
+          background-repeat: no-repeat;
+          margin-left: 8px;
+        }
+      }
+      h3 {
+        margin: 20px 0 20px;
+      }
+    }
+    .mystic-land-gems {
+      position: absolute;
+      right: -87px;
+      top: -80px;
+    }
+  }
+  .mystic-land-how {
+    width: 600px;
+    max-width: 100%;
+    padding-bottom: 90px;
+  }
+  .mystic-land-sketches {
+    margin-left: -150px;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    amp-img {
+      max-width: 99%;
+    }
+  }
+  .mystic-land-what {
+    padding: 100px 0;
+    .mystic-land-what-text {
+      margin: 0 auto;
+      text-align: center;
+      width: 600px;
+      max-width: 100%;
+    }
+    .mystic-land-what-screenshots {
+      padding: 100px 0 100px;
+      display: flex;
+      flex-direction: row;
+      amp-img {
+        border-radius: 9%/5%;
+        margin: 6px;
+      }
+    }
+    .mystic-land-download {
+      text-align: center;
+    }
+  }
+}
 
+
+.project-clarah {
+  padding: 150px 0 0 0;
+  background: #18181A;
+  .clarah-hero {
+    padding:0 150px;
+    .image-headline {
+      h3 {
+        color: #fff;
+      }
+      span {
+        color:#fff;
+        transform: translateY(11px);
+        font-size: 28px;
+        margin-left: 16px;
+      }
+    }
+    p {
+      color: var(--pale-grey);
+      width: 600px;
+      max-width: 100%;
+      padding-bottom: 50px;
+    }
+    button {
+      &.open-overlay {
+        color: #fff;
+        background: #292A36;
+        font-size: 26px;
+        border-radius: $round-border;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 0 20px 0 30px;
+        span {
+          transform: translateY(-1px);
+        }
+        svg {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  .clarah-render-wrap {
+    position: relative;
+    div {
+      position: absolute;
+      bottom: 150px;
+      left: 150px;
+      z-index: 2;
+      h5,
+      span {
+        color: #fff;
+      }
+    }
+  }
+  .clarah-circle-gallery {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    amp-img {
+      border-radius: 50%;
+      margin: 150px 0;
+    }
+  }
+}
+
+.project-app-radar {
+  .laptop {
+    position: relative;
+    // width: 800px;
+    amp-img {
+      max-width: 76%;
+      position: absolute;
+      top: 7.4%;
+      left: 12%;
+      z-index: 2;
+      border-radius: 0.5%/0.8%;
+    }
+    svg {
+      width: 100%;
+    }
+  }
+}
 
 
 

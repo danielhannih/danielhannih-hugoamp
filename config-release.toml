@@ -1,4 +1,4 @@
-baseURL = "https://veey.io"
+baseURL = "https://veey.io/"
 theme = "hugo-amp"
 enableRobotsTXT = true
 disableHugoGeneratorInject = true
