@@ -68,10 +68,17 @@
 
   <!-- 3. Preload AMP Components & Extensions  -->
   <link as="script" rel="preload" href="{{ $amp_analytics }}">
+  <link as="script" rel="preload" href="{{ $amp_youtube }}">
+  <link as="script" rel="preload" href="{{ $amp_lightbox }}">
+  <link as="script" rel="preload" href="{{ $amp_sidebar }}">
 
 
   <!-- 4. Preconnect to unknown resources ahead eg: https://fonts.gstatic.com/ -->
   <link rel="preconnect dns-prefetch" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preconnect" href="https://i9.ytimg.com">
+  <link rel="preconnect" href="https://s.ytimg.com">
 
 
   <!-- 5. Load the AMP runtime: -->
@@ -81,8 +88,8 @@
   <!-- 6. Load your AMP Extensions -->
   <script async custom-element="amp-analytics" src="{{ $amp_analytics }}"></script>
   <script async custom-element="amp-youtube" src="{{ $amp_youtube }}"></script>
-  <script async custom-element="amp-lightbox"  src="{{ $amp_lightbox }}"></script>
-  <script async custom-element="amp-sidebar"  src="{{ $amp_sidebar }}"></script>
+  <script async custom-element="amp-lightbox" src="{{ $amp_lightbox }}"></script>
+  <script async custom-element="amp-sidebar" src="{{ $amp_sidebar }}"></script>
 
 
   <!-- 7. Load otherscripts that are not render blocking -->
@@ -134,6 +141,7 @@
       <a href="#contact">Contact</a>
       <a href="#my-story">My Story</a>
       <a href="#">Blog</a>
+      <a target="_blank" class="cta" href="mailto:hi@danielhannih.com">Contact Me</a>
     </nav>
 
   </amp-sidebar>
@@ -713,14 +721,108 @@
 </section>
 
 <section class="project-app-radar">
-  <div class="laptop">
-    {{ with .Resources.Match "app-radar-keyword-rankings*" }}
-    {{ range .}}
-    <amp-img alt="App Radar ASO Tool Keyword Rankings Screen" src="{{ .Permalink }}" width="2880" height="1800" sizes="2880px">
-    </amp-img>
-    {{ end }}
-    {{ end }}
-    {{- partial "svg/laptop.html" -}}
+  <div class="app-radar-hero">
+    {{- partial "svg/floating-app-shapes.html" -}}
+    <div class="app-radar-hero-text">
+      <div class="image-headline">
+        {{ with .Resources.Match "app-radar-logo*" }}
+        {{ range .}}
+        <amp-img alt="App Radar ASO Tool Logo" src="{{ .Permalink }}" width="60" height="60" sizes="60px">
+        </amp-img>
+        {{ end }}
+        {{ end }}
+        <h3>App Radar</h3>
+      </div>
+      <p>I met Christian and Thomas — the founders of App Radar — back in 2015. Together we worked on some exciting projects. Shorty after, I joined their amazing team of really smart and bright minds.</p>
+    </div>
+  </div>
+  <div class="app-radar-customers">
+    <h4>In a nutshell.</h4>
+    <p>Since then we pioneered new ways, how app marketers and developers of leading industry can distribute and optimize their apps to reach new users.</p>
+    <ul>
+      <li>{{- partial "svg/logo-itranslate.html" -}}</li>
+      <li>{{- partial "svg/logo-tivola.html" -}}</li>
+      <li>{{- partial "svg/logo-tinder.html" -}}</li>
+      <li>{{- partial "svg/logo-wargaming.html" -}}</li>
+      <li>{{- partial "svg/logo-microsoft.html" -}}</li>
+      <li>{{- partial "svg/logo-raw-fury.html" -}}</li>
+      <li>{{- partial "svg/logo-kolibri.html" -}}</li>
+    </ul>
+  </div>
+  <div class="app-radar-what">
+    <div class="app-radar-what-text">
+      <h4>In a nutshell.</h4>
+      <p>App Radar helps marketers and developers of apps and mobile games increasing their organic reach in the app stores. It’s a high-end SAAS solution powered by AI, with features designed to improving search rankings and your workflow.</p>
+      <h5>My Role</h5>
+      <ul>
+        <li>Creative Director</li>
+        <li>Design</li>
+        <li>Branding</li>
+        <li>Product</li>
+        <li>Marketing</li>
+      </ul>
+      <a rel="nofollow noopener" target="_blank" href="https://appradar.com/">Visit appradar.com</a>
+    </div>
+    <div class="laptop-wrap">
+      <div class="laptop">
+        {{ with .Resources.Match "app-radar-keyword-rankings*" }}
+        {{ range .}}
+        <amp-img alt="App Radar ASO Tool Keyword Rankings Screen" src="{{ .Permalink }}" width="2880" height="1800" sizes="2880px">
+        </amp-img>
+        {{ end }}
+        {{ end }}
+        {{- partial "svg/laptop.html" -}}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="making-of">
+  <div class="making-of-hero">
+    <h3>Behind the scenes.</h3>
+    <p>What fascinates me about the gaming industry is that it requires so many different skills to work together. The whole process behind designing.</p>
+  </div>
+  <div class="video-gallery">
+    <div class="video-gallery-item">
+      <div class="video-gallery-item-text">
+        <div class="headline-year">
+          <h4>Astro Pig</h4>
+          <span>2014</span>
+        </div>
+        <p>Starting with a drawing as a basis, I used advanced photomanipulation techniques like puppet warp.</p>
+        <h5>Additional Information</h5>
+        <ul>
+          <li>Original Time: 2.5h</li>
+          <li>{{- partial "svg/icon-photoshop.html" -}}<span>Photoshop</span></li>
+        </ul>
+      </div>
+      <amp-youtube
+        data-videoid="gsBzSnAh4GQ"
+        layout="responsive"
+        width="480" height="270">
+      </amp-youtube>
+    </div>
+    <div class="video-gallery-item">
+      <div class="video-gallery-item-text">
+        <div class="headline-year">
+          <h4>Summer Skull</h4>
+          <span>2013</span>
+        </div>
+        <p>Starting with a drawing as a basis, I used advanced photomanipulation techniques like puppet warp.</p>
+        <h5>Additional Information</h5>
+        <ul>
+          <li>Original Time: 3h</li>
+          <li>{{- partial "svg/icon-photoshop.html" -}}<span>Photoshop</span></li>
+        </ul>
+      </div>
+      <amp-youtube
+        data-videoid="7Wpu6yn5WpQ"
+        layout="responsive"
+        width="480" height="270">
+      </amp-youtube>
+    </div>
   </div>
 </section>
 
