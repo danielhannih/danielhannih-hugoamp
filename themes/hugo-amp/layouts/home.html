@@ -63,7 +63,7 @@
   <!-- 2. AMP Runtime -->
   <!-- Preload the AMP runtime v0.js -->
   <link rel="preload" as="script" href="{{ $amp_runtime }}">
-  <link rel="preload" href="{{ $danielImage.Permalink }}" as="image">
+  <link rel="preload" media="(min-width: 960px)" href="{{ $danielImage.Permalink }}" as="image">
 
 
   <!-- 3. Preload AMP Components & Extensions  -->
@@ -139,9 +139,9 @@
     <nav>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-      <a href="#my-story">My Story</a>
-      <a href="#">Blog</a>
-      <a target="_blank" class="cta" href="mailto:hi@danielhannih.com">Contact Me</a>
+      <!-- <a href="#my-story">My Story</a> -->
+      <!-- <a href="#">Blog</a> -->
+      <!-- <a target="_blank" class="cta" href="mailto:hi@danielhannih.com">Contact Me</a> -->
     </nav>
 
   </amp-sidebar>
@@ -161,9 +161,9 @@
 
 
 <section class="why">
-
+  <span>I'm Daniel, designer and maker.</span>
   <h1>Being able to create things and express myself, is what keeps me awake at night.</h1>
-  <a class="cta" href="#">Learn more</a>
+  <!-- <a class="cta" href="#">Learn more</a> -->
 </section>
 
 <div class="recommended-view">
@@ -178,7 +178,7 @@
 <section class="how">
   <h2>The possibility to learn something new every day, is what powers my drive to be creative.</h2>
   <p>Whenever I discover something new — that firmly excites me — I go all-in. I get obsessed. And suck it up like a sponge. I don’t believe in much, but learning something new each day is the coolest thing ever. And I'm grateful that the majority of us have access to technology to literally go on Youtube and learn how to peel a banana.</p>
-  <a class="cta" href="#">Keep exploring</a>
+  <!-- <a class="cta" href="#">Keep exploring</a> -->
   <div class="astroboy-footer-note">
     <div class="astroboy-info">
       <h5>Astroboy (2014)</h5>
@@ -230,7 +230,7 @@
   <div class="what-text">
     <h2>Analogue or digital. I don’t care about the medium. The result matters.</h2>
     <p>From illustrations and artworks to ui and ux design. From app and mobile games design to even developing them. Making large acrylic paintings or composing music. I just love the process.</p>
-    <a class="cta" href="#">Project Showcase</a>
+    <!-- <a class="cta" href="#">Project Showcase</a> -->
   </div>
   <div class="bouncy-heroes-characters">
 
@@ -422,7 +422,7 @@
 
   <div class="psycat-story">
     <div class="psycat-story-text">
-      <h4>Why making games?</h4>
+      <!-- <h4>Why making games?</h4> -->
       <p>What fascinates me about the gaming industry is that it requires so many different skills to work together. The whole process behind designing, building, marketing and monetizing is astonishing. As a passionate gamer myself and with entry-friendly software to enable making games, it was a no-brainer to try it out.</p>
     </div>
     <div class="psycat-app-cloud">
@@ -826,7 +826,59 @@
   </div>
 </section>
 
+<section class="contact" id="contact">
+  <div class="contact-hero">
+    <h2>Let's build something<br>great together.</h2>
+    <p>I love collaborating with ambitious people.<br>Do you want to be the next?</p>
+    <a target="_blank" href="mailto:hi@danielhannih.com">hi@danielhannih.com</a>
+  </div>
+    <ul>
+      <li>
+        <a title="Daniel Hannih on LinkedIn" rel="nofollow noopener" target="_blank" href="https://www.linkedin.com/in/danielhannih/">
+          {{- partial "svg/logo-mono-linkedin.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on Twitter" rel="nofollow noopener" target="_blank" href="https://twitter.com/danielhannih">
+          {{- partial "svg/logo-mono-twitter.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on Instagram" rel="nofollow noopener" target="_blank" href="https://www.instagram.com/danielhannih/">
+          {{- partial "svg/logo-mono-instagram.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on Facebook" rel="nofollow noopener" target="_blank" href="https://www.facebook.com/danielhannih">
+          {{- partial "svg/logo-mono-facebook.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on GitHub" rel="nofollow noopener" target="_blank" href="https://github.com/danielhannih/">
+          {{- partial "svg/logo-mono-github.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on Youtube" rel="nofollow noopener" target="_blank" href="https://www.youtube.com/channel/UCkrFkllKEWmBsXk3DWbCBkQ">
+          {{- partial "svg/logo-mono-youtube.html" -}}
+        </a>
+      </li>
+      <li>
+        <a title="Daniel Hannih on Dribbble" rel="nofollow noopener" target="_blank" href="https://dribbble.com/danielhannih">
+          {{- partial "svg/logo-mono-dribbble.html" -}}
+        </a>
+      </li>
+    </ul>
+</section>
 
+<section class="footer">
+  <div class="footer-content">
+    <div class="copyright">
+      ©{{ dateFormat "2006" now }} {{ .Site.Params.personName }} <br>
+      All rights reserved.
+    </div>
+  </div>
+</section>
 
 
 
